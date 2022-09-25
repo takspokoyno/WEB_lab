@@ -43,7 +43,7 @@ namespace Labka1.Controllers
             }
 
             //return View(car);
-            return RedirectToAction("Index", "Parts", new { carId = car.Id , brand = car.Brand, model=car.Model}); 
+            return RedirectToAction("Index", "Parts", new { carId = car.Id , brand = car.Brand, model=car.Model, picture = car.Picture}); 
         }
 
         // GET: Cars/Create
@@ -59,7 +59,7 @@ namespace Labka1.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,Brand,Model,Price,Year,OwnerId")] Car car)
+        public async Task<IActionResult> Create([Bind("Id,Brand,Model,Price,Year,Picture,OwnerId")] Car car)
         {
             if (ModelState.IsValid)
             {
@@ -94,7 +94,7 @@ namespace Labka1.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,Brand,Model,Price,Year,OwnerId")] Car car)
+        public async Task<IActionResult> Edit(int id, [Bind("Id,Brand,Model,Price,Year,Picture,OwnerId")] Car car)
         {
             if (id != car.Id)
             {

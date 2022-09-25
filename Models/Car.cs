@@ -24,6 +24,8 @@ namespace Labka1.Models
         [Required(ErrorMessage = "Поле не може бути пустим")]
         [Display(Name = "Рік випуску")]
         public int? Year { get; set; }
+        [Display(Name = "Фото")]
+        public string? Picture { get; set; }
         [Display(Name = "Власник")]
         public int? OwnerId { get; set; }
         [Display(Name = "Власник")]

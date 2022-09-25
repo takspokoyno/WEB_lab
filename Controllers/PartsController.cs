@@ -20,13 +20,13 @@ namespace Labka1.Controllers
         }
 
         // GET: Parts
-        public async Task<IActionResult> Index(int? carId, string model, string brand)
+        public async Task<IActionResult> Index(int? carId, string model, string brand, string picture)
         {
             if (carId == null) return RedirectToAction("Cars", "Index");
-
             //ViewBag.CarId = id;
             ViewBag.CarBrand = brand;
             ViewBag.CarModel = model;
+            ViewBag.CarPicture = picture;
             var partsByCar = _context.Parts.Where(p => p.CarId == carId); 
             ViewData["currentCarId"]=carId;
             List<Part> result = await partsByCar.ToListAsync();
@@ -73,7 +73,7 @@ namespace Labka1.Controllers
             {
                 _context.Add(part);
                 await _context.SaveChangesAsync();
-                return RedirectToAction(nameof(Index), "Parts", routeValues: new {carId=part.CarId, _context.Cars.Where(c => c.Id == part.CarId).FirstOrDefault().Brand, _context.Cars.Where(c => c.Id == part.CarId).FirstOrDefault().Model });
+                return RedirectToAction(nameof(Index), "Parts", routeValues: new {carId=part.CarId, _context.Cars.Where(c => c.Id == part.CarId).FirstOrDefault().Brand, _context.Cars.Where(c => c.Id == part.CarId).FirstOrDefault().Model, _context.Cars.Where(c => c.Id == part.CarId).FirstOrDefault().Picture });
             }
             ViewData["currentCar"] = _context.Cars.FirstOrDefault(c => c.Id == part.CarId);
             return View(part);
@@ -130,7 +130,7 @@ namespace Labka1.Controllers
                         throw;
                     }
                 }
-                return RedirectToAction(nameof(Index), "Parts", routeValues: new { carId = part.CarId, _context.Cars.Where(c => c.Id == part.CarId).FirstOrDefault().Brand, _context.Cars.Where(c => c.Id == part.CarId).FirstOrDefault().Model });
+                return RedirectToAction(nameof(Index), "Parts", routeValues: new { carId = part.CarId, _context.Cars.Where(c => c.Id == part.CarId).FirstOrDefault().Brand, _context.Cars.Where(c => c.Id == part.CarId).FirstOrDefault().Model, _context.Cars.Where(c => c.Id == part.CarId).FirstOrDefault().Picture });
             }
             ViewData["currentCar"] = _context.Cars.FirstOrDefault(c => c.Id == part.CarId);
             return View(part);
@@ -173,7 +173,7 @@ namespace Labka1.Controllers
             
             await _context.SaveChangesAsync();
             ViewData["currentCar"] = _context.Cars.FirstOrDefault(c => c.Id == part.CarId);
-            return RedirectToAction(nameof(Index), "Parts", routeValues: new { carId = part.CarId, _context.Cars.Where(c => c.Id == part.CarId).FirstOrDefault().Brand, _context.Cars.Where(c => c.Id == part.CarId).FirstOrDefault().Model });
+            return RedirectToAction(nameof(Index), "Parts", routeValues: new { carId = part.CarId, _context.Cars.Where(c => c.Id == part.CarId).FirstOrDefault().Brand, _context.Cars.Where(c => c.Id == part.CarId).FirstOrDefault().Model, _context.Cars.Where(c => c.Id == part.CarId).FirstOrDefault().Picture });
         }
 
         private bool PartExists(int id)

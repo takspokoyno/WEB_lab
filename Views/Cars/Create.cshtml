@@ -33,6 +33,11 @@
                 <span asp-validation-for="Year" class="text-danger"></span>
             </div>
             <div class="form-group">
+                <label asp-for="Picture" class="control-label"></label>
+                <input asp-for="Picture" class="form-control" />
+                <span asp-validation-for="Picture" class="text-danger"></span>
+            </div>
+            <div class="form-group">
                 <label asp-for="OwnerId" class="control-label"></label>
                 <select asp-for="OwnerId" class ="form-control" asp-items="ViewBag.Owner"></select>
             </div>
