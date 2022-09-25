@@ -1,0 +1,75 @@
+﻿@model IEnumerable<Labka1.Models.Team>
+
+@{
+    ViewData["Title"] = "Команди";
+}
+
+<h1>Команди</h1>
+
+<p>
+    @{
+        if (User.IsInRole("admin"))
+        {
+            <a asp-action="Create">Створити нову</a>
+        }
+    }
+</p>
+
+@{
+    if (User.IsInRole("admin"))
+    {
+        <div>
+            <h3>Оберіть excel-файл для заватаження</h3>
+            @using (Html.BeginForm("Import", "Teams", FormMethod.Post, new { enctype = "multipart/form-data", id =
+            "frm-excel" }))
+        {
+        <div>
+        Завантаження з Excel-файлу:
+        <input type="file" name="fileExcel" id="fileExcel" />
+        <div>
+            <input type="submit" value="Завантажити" />
+        </div>
+        </div>
+        }
+        </div>
+    }
+}
+
+<div>
+    <h3>Завантаження інформації в файл</h3>
+    <div>
+            <input type="submit" value="Завантажити" />
+    </div>
+</div>
+
+<p line-height="3"></p>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Name)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Name)
+            </td>
+            <td>
+                    @{
+                        if (User.IsInRole("admin"))
+                        {
+                            <a asp-action="Edit" asp-route-id="@item.Id">Редагувати</a> 
+                            <a asp-action="Delete" asp-route-id="@item.Id">Видалити</a>
+                        }
+                    }
+                <a asp-action="Details" asp-route-id="@item.Id">Деталі</a>  
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

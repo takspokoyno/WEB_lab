@@ -1,0 +1,13 @@
+﻿@{
+    ViewData["Title"] = "Налаштування";
+}
+<h1>@ViewData["Title"]</h1>
+
+<p>
+    @{
+        if (User.IsInRole("admin"))
+        {
+            <a asp-controller="Roles" asp-action="Index">Ролі</a>
+        }
+    }
+</p>

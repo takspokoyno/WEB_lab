@@ -1,0 +1,8 @@
+version: '3.4'
+
+services:
+  labka1:
+    image: ${DOCKER_REGISTRY-}labka1
+    build:
+      context: .
+      dockerfile: Dockerfile

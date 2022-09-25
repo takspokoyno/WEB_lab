@@ -1,0 +1,40 @@
+﻿@model Labka1.Models.Part
+
+@{
+    ViewData["Title"] = "Редагувати";
+}
+
+<h1>Редагувати</h1>
+
+<h4>Запчастини</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Edit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="Id" />
+            <div class="form-group">
+                <label asp-for="Name" class="control-label"></label>
+                <input asp-for="Name" class="form-control" />
+                <span asp-validation-for="Name" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                @*<label asp-for="CarId" class="control-label"></label>
+                <select asp-for="CarId" class="form-control" asp-items="ViewBag.CarId"></select>
+                <span asp-validation-for="CarId" class="text-danger"></span>*@
+                <input type="hidden" asp-for="CarId" value="@ViewBag.currentCar.Id" />
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Зберегти" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+   @Html.ActionLink("Назад", "Index", "Parts",routeValues: new{carId = @ViewBag.currentCar.Id, brand = @ViewBag.CarBrand, model = @ViewBag.CarModel})
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

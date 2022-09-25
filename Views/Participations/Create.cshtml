@@ -1,0 +1,39 @@
+﻿@model Labka1.Models.Participation
+
+@{
+    ViewData["Title"] = "Реєстрація";
+}
+
+<h1>Реєстрація</h1>
+
+<h4>Участь</h4>
+
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="RacerId" class="control-label"></label>
+                <select asp-for="RacerId" class ="form-control" asp-items="ViewBag.RacerId"></select>
+            </div>
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                @*<label asp-for="TournamentId" class="control-label"></label>
+                <select asp-for="TournamentId" class ="form-control" asp-items="ViewBag.TournamentId"></select>*@
+                 <input type="hidden" asp-for="TournamentId" value="@ViewBag.currentTournament.Id" />
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Створити" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    @Html.ActionLink("Назад", "Index", "Participations", routeValues: new{tournamentId = @ViewBag.currentTournament.Id, tournamentName = @ViewBag.TournamentName})
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

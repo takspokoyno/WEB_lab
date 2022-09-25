@@ -1,0 +1,58 @@
+﻿@model IEnumerable<Labka1.Models.Participation>
+
+@{
+    ViewData["Title"] = "Участь";
+}
+
+<h1>Учасники турніру @ViewBag.TournamentName</h1>
+
+<p>
+    @{
+        if (User.IsInRole("admin"))
+        {
+            @Html.ActionLink("Зареєструвати", "Create", "Participations",routeValues: new{tournamentId = @ViewBag.currentTournamentId})
+        }
+    }
+</p>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Racer)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Racer.Sex)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Racer.BirthDate)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Racer.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Racer.Sex)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Racer.BirthDate)
+            </td>
+            <td>
+                    @{
+                        if (User.IsInRole("admin"))
+                        {
+                            <a asp-action="Delete" asp-route-id="@item.Id">Видалити</a>
+                        }
+                    }
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
+
+@Html.ActionLink("Назад", "Index", "Tournaments")
