@@ -36,13 +36,18 @@
                         </li>
                     </ul>
                     <ul class="navbar-nav flex-grow-2">
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Налаштування</a>
+                        </li>
                         <li />
                         @if (User.Identity.IsAuthenticated)
                         {
-                            <li class="nav-item">@User.Identity.Name</li>
+                            <li class="nav-item">
+                                 <a class="nav-link text-dark">@User.Identity.Name</a>
+                            </li>
                             <li class="nav-item">
                                 <form method="post" asp-controller="Account" asp-action="Logout">
-                                    <input type="submit" value="Вийти з аккаунта" style = "height: 25px; width: 145px; margin-left: 10px;" text-align: center />
+                                    <input type="submit" value="Вийти" class="nav-link text-dark"/>
                                 </form>
                             </li>
                         }
@@ -70,7 +75,7 @@
 
     <footer class="border-top footer text-muted"> 
         <div>
-            &copy; 2022 - Labka1 | Contacts: vladburlaka2003@gmail.com  +380668804927 <a class = "aboba" asp-controller="Home" asp-action="Privacy">Налаштування</a>
+            &copy; 2022 - Labka1 | Contacts: vladburlaka2003@gmail.com  +380668804927
         </div>
     </footer>
     <script src="~/lib/jquery/dist/jquery.min.js"></script>

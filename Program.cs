@@ -19,6 +19,14 @@ builder.Services.AddControllersWithViews();
 
 builder.Services.AddIdentity<User, IdentityRole>().AddEntityFrameworkStores<IdentityContext>();
 
+builder.Services.AddAuthentication()
+        .AddGoogle(opts =>
+        {
+            opts.ClientId = "642336707671-73jnbecnuuj8erf9vuvns3rapbt3hgtn.apps.googleusercontent.com";
+            opts.ClientSecret = "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";
+            opts.SignInScheme = IdentityConstants.ExternalScheme;
+        });
+
 var app = builder.Build();
 
 using (var scope = app.Services.CreateScope())
