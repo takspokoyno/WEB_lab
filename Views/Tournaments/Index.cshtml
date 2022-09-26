@@ -88,3 +88,42 @@ function drawBasic() {
 <p line-height="3">
     
 </p>
+
+<h2>Місце проведення</h2>
+
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+    }
+
+    #map {
+        height: 500px;
+        width: 80%;
+    }
+</style>
+
+<div id="map"></div>
+<script type="text/javascript">
+    function initMap() {
+    var location = { lat: 50.439613, lng: 30.516939 };
+    var map = new google.maps.Map(document.getElementById("map"), {
+    zoom: 2,
+    center: location
+    });
+        @foreach (var item in Model) {
+        <text>
+            addMarker({lat: @item.Lat, lng: @item.Lng});
+        </text>
+    }
+    function addMarker(coords){
+        var marker = new google.maps.Marker({
+        position:coords,
+        map:map
+    });   
+    }
+        }
+    </script>
+
+<script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDRjYjH0Y-hkkSevFQvSBrEpPc5xpLuK1U&callback=initMap">
+</script>

@@ -20,6 +20,7 @@ namespace Labka1.Models
         [Display(Name = "Стать")]
         public string Sex { get; set; } = null!;
         [Display(Name = "Дата народження")]
+        [DisplayFormat(DataFormatString = "{0:dd/MM/yyyy}")]
         public DateTime BirthDate { get; set; }
         [Display(Name = "Команда")]
         public int? TeamId { get; set; }

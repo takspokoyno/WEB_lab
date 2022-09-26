@@ -42,7 +42,7 @@ namespace Labka1.Controllers
                 return NotFound();
             }
 
-            return RedirectToAction("Index", "Participations", routeValues: new { tournamentId = tournament.Id, tournamentName = tournament.Name });
+            return RedirectToAction("Index", "Participations", routeValues: new { tournamentId = tournament.Id, tournamentName = tournament.Name});
             //return View(tournament);
         }
 
@@ -58,7 +58,7 @@ namespace Labka1.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,Name,Reward")] Tournament tournament)
+        public async Task<IActionResult> Create([Bind("Id,Name,Reward,Lat,Lng")] Tournament tournament)
         {
             if (ModelState.IsValid)
             {
@@ -91,7 +91,7 @@ namespace Labka1.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,Name,Reward")] Tournament tournament)
+        public async Task<IActionResult> Edit(int id, [Bind("Id,Name,Reward,Lat,Lng")] Tournament tournament)
         {
             if (id != tournament.Id)
             {

@@ -18,6 +18,12 @@ namespace Labka1.Models
         [Required(ErrorMessage = "Поле не може бути пустим")]
         [Display(Name = "Винагорода")]
         public decimal? Reward { get; set; }
+        [Display(Name = "Широта")]
+        [DisplayFormat(DataFormatString = @"{0:F2}", HtmlEncode = false, ApplyFormatInEditMode = true)]
+        public double Lat { get; set; }
+        [Display(Name = "Довгота")]
+        [DisplayFormat(DataFormatString = @"{0:F2}", HtmlEncode = false, ApplyFormatInEditMode = true)]
+        public double Lng { get; set; }
 
         public virtual ICollection<Participation> Participations { get; set; }
     }
