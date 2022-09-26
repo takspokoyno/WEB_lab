@@ -7,11 +7,24 @@
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap_state.min.css" />
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/Labka1.styles.css" asp-append-version="true" />
-    <style> 
+    <style type="text/css">
         .aboba {
             float: right; 
             margin-right: 20px;
-        } 
+        }
+        #footer {
+        position: fixed; /* Фиксированное положение */
+        right: 10px; bottom: 5px; /* Правий нижний угол */
+        padding: 5px; /* Поля вокруг текста */
+        background: black; /* Цвет фона */
+        color: #555!important; /* Цвет текста */
+        width: 25%; /* Ширина слоя */
+        border: solid;
+        border-radius: 20px;
+        border-width: 2px;
+        border-color: #555!important;
+        text-align: center;
+   } 
     </style>
 </head>
 <body>
@@ -75,9 +88,13 @@
 
     <footer class="border-top footer text-muted"> 
         <div>
-            &copy; 2022 - Labka1 | Contacts: vladburlaka2003@gmail.com  +380668804927
+            &copy; 2022 - Labka1 by Vladyslav Burlaka and Dmytro Lytvynenko
         </div>
     </footer>
+
+    <div id="footer">
+       Contact information: <a href="https://t.me/tak_spokoyno"><img src="https://i.postimg.cc/2y0Fp5jf/pngwing-com.png" style="width:10%;height:10%;"></a> <a href="mailto:vladburlaka2003@gmail.com"><img src="https://i.postimg.cc/dtznJLmq/png-transparent-google-mail-gmail-logo-icon.png" style="width:13%;height:13%;"></a>
+    </div>
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>
