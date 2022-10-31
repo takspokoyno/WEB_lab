@@ -1,12 +1,14 @@
 ﻿<!DOCTYPE html>
 <html lang="en">
 <head>
+    @Html.AntiForgeryToken()   
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>@ViewData["Title"] - Drift Paradise</title>
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap_state.min.css" />
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/Labka1.styles.css" asp-append-version="true" />
+    <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
     <meta name="description" content="Дріфт-турніри світу, їх учасники та задіяні авто" />
     <meta name="keywords" content="drift, cars, дріфт, автомобілі" />
     <style type="text/css">
@@ -15,12 +17,12 @@
             margin-right: 20px;
         }
         #footer {
-        position: fixed; /* Фиксированное положение */
-        right: 10px; bottom: 5px; /* Правий нижний угол */
-        padding: 5px; /* Поля вокруг текста */
-        background: black; /* Цвет фона */
-        color: #555!important; /* Цвет текста */
-        width: 25%; /* Ширина слоя */
+        position: fixed; 
+        right: 10px; bottom: 5px; 
+        padding: 5px; 
+        background: black; 
+        color: #555!important; 
+        width: 25%; 
         border: solid;
         border-radius: 20px;
         border-width: 2px;
@@ -97,7 +99,8 @@
        Contact information: <a href="https://t.me/tak_spokoyno"><img src="https://i.postimg.cc/2y0Fp5jf/pngwing-com.png" style="width:10%;height:10%;"></a> <a href="mailto:vladburlaka2003@gmail.com"><img src="https://i.postimg.cc/dtznJLmq/png-transparent-google-mail-gmail-logo-icon.png" style="width:13%;height:13%;"></a>
     </div>
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
-    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>    
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>
     @await RenderSectionAsync("Scripts", required: false)
 </body>
